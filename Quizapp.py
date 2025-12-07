@@ -80,18 +80,26 @@ if not st.session_state.finished:
     # this is where we check the user submission 
     # this part of script in simple words is checking if the user submits and what happens and if the option choosed by the user is correct
     # if the option is correct the user gets a score if it is not then the user does not 
+   if not st.session_state.done:
     if st.button("Submit"):
         st.session_state.done = True
 
         if userchoice == current["A"]:
             st.session_state.score += 1
-            st.spinner("Loading....")
             st.success("Correct!")
             st.balloons()
         else:
-            st.spinner("Loading....")
             st.error("Wrong")
-            st.write("The correct answser is", current["A"])
+            st.write("The correct answer is", current["A"])
+        
+        st.rerun()
+else:
+    # Show the result after submission
+    if userchoice == current["A"]:
+        st.success("Correct!")
+    else:
+        st.error("Wrong")
+        st.write("The correct answer is", current["A"])
 
 # this is where if the user did submit their answser 
 if st.session_state.finished:
@@ -106,5 +114,6 @@ elif st.session_state.done:
         if st.session_state.qnum >= TOTAL:
             st.session_state.finished = True
         st.rerun()
+
 
 
