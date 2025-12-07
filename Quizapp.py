@@ -83,23 +83,23 @@ if not st.session_state.finished:
     if not st.session_state.done:
         if st.button("Submit"):
             st.session_state.done = True
-
+            
+            if userchoice == current["A"]:
+                st.session_state.score += 1
+                st.success("Correct!")
+                st.balloons()
+            else:
+                st.error("Wrong")
+                st.write("The correct answer is", current["A"])
+            
+            st.rerun()
+    else:
+        # Show the result after submission
         if userchoice == current["A"]:
-            st.session_state.score += 1
             st.success("Correct!")
-            st.balloons()
         else:
             st.error("Wrong")
             st.write("The correct answer is", current["A"])
-        
-        st.rerun()
-else:
-    # Show the result after submission
-    if userchoice == current["A"]:
-        st.success("Correct!")
-    else:
-        st.error("Wrong")
-        st.write("The correct answer is", current["A"])
 
 # this is where if the user did submit their answser 
 if st.session_state.finished:
@@ -114,7 +114,3 @@ elif st.session_state.done:
         if st.session_state.qnum >= TOTAL:
             st.session_state.finished = True
         st.rerun()
-
-
-
-
