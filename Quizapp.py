@@ -52,10 +52,10 @@ TOTAL = len(questions)
 # if user presses "Lets start" then begin the quiz from question Number 0 rerun the script now so it updates everything and stop it if something wrong happens
 if st.session_state.qnum == -1:
     st_lottie(jsonanimation, height=300)
-    st.title("👋🏼 Hello! Welcome to the quiz")
-    st.title("General knowlege quiz!")
+    st.title("👋🏼 Hello! Welcome ")
+    st.title("General knowlege quiz")
 
-    if st.button("Lets start!"):
+    if st.button("Lets begin!"):
         st.session_state.qnum = 0
         st.rerun()
 
@@ -114,3 +114,4 @@ elif st.session_state.done:
         if st.session_state.qnum >= TOTAL:
             st.session_state.finished = True
         st.rerun()
+
