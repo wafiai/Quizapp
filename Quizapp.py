@@ -4,7 +4,7 @@ from streamlit_lottie import st_lottie
 
 
 #This to load the welcome animation, What happens here is simple, take file from path and load as json
-with open(r"C:\Users\dell\Pictures\Quiz app\Welcome plants.json", "r") as welcomeanimation:
+with open("Welcome plants.json", "r") as welcomeanimation:
     jsonanimation = json.load(welcomeanimation)
 
 #Due to streamlits VERY bad way of running this is to ensure that everytime it reruns these key things are still there
@@ -106,4 +106,5 @@ elif st.session_state.done:
         if st.session_state.qnum >= TOTAL:
             st.session_state.finished = True
         st.rerun()
+
 
